@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Adding Styles</title>
+</head>
+<body>
+
+<div id="myDiv">
+My Message
+</div>
+<input type="button" value="Toggle style" onclick="toggleStyle()"/>
+<script type="text/javascript">
+function toggleStyle(){
+	var div=document.getElementById("myDiv");
+	if(!div.style.color){
+		div.style.color="red";
+		div.style.fontWeight="bold";
+		div.style.backgroundColor="yellow";
+	}else{
+		div.style.color="";
+		div.style.fontWeight="";
+		div.style.backgroundColor="";
+	}
+}
+
+</script>
+</body>
+</html>

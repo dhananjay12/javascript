@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Registration Basic</title>
+</head>
+<body>
+	<form name="myForm" action="" onsubmit="validateForm(event)"
+		autocomplete="off">
+
+		<table>
+			<tr>
+				<td>Name:</td>
+				<td><input type="text" name="txtName" /></td>
+			</tr>
+			<tr>
+				<td>Age:</td>
+				<td><input type="text" name="txtAge" /></td>
+			</tr>
+			<tr>
+				<td>Email:</td>
+				<td><input type="text" name="txtEmail" /></td>
+			</tr>
+			<tr>
+				<td><input name="btnReset" type="reset" value="Reset" /></td>
+				<td><input name="btnSubmit" type="submit" value="Submit" /></td>
+			</tr>
+		</table>
+
+	</form>
+	<script type="text/javascript">
+		function ValidationException(element, message) {
+			this.element = element;
+			this.message = message;
+		}
+
+		function validateForm(event) {
+			var varForm = document.myForm;
+			var txtName = varForm.txtName;
+			var txtAge = varForm.txtAge;
+			var txtEmail = varForm.txtEmail;
+			var button = varForm.btnSubmit;
+			var age = parseInt(txtAge.value);
+
+			button.disabled = true;
+
+			try {
+				if (isEmpty(txtName.value)) {
+					throw new ValidationException(txtName,"Please enter your name.");
+				}
+
+				if (isNaN(age) || !(age > 0)) {
+					throw new ValidationException(txtAge,"Please enter a valid age.");
+				}
+
+				if (!(txtEmail.value.indexOf("@") > 0)) {
+					throw new ValidationException(txtEmail,"Please enter a valid email address.");
+				}
+			} catch (exception) {
+				var element = exception.element;
+
+				alert(exception.message);
+				element.focus();
+				element.select();
+
+				event.preventDefault();
+				button.disabled = false;
+			}
+		}
+
+		function isEmpty(value) {
+			return (value === "");
+		}
+	</script>
+</body>
+</html>

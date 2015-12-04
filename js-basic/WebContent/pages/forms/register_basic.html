@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Registration Basic</title>
+</head>
+<body>
+	<form name="myForm" action="" onsubmit="validateForm(event)"
+		autocomplete="off">
+
+		<table>
+			<tr>
+				<td>Name:</td>
+				<td><input type="text" name="txtName" /></td>
+			</tr>
+			<tr>
+				<td>Age:</td>
+				<td><input type="text" name="txtAge" /></td>
+			</tr>
+			<tr>
+				<td>Email:</td>
+				<td><input type="text" name="txtEmail" /></td>
+			</tr>
+			<tr>
+				<td><input name="btnReset" type="reset" value="Reset" /></td>
+				<td><input name="btnSubmit" type="submit" value="Submit" /></td>
+			</tr>
+		</table>
+
+	</form>
+	<script type="text/javascript">
+		function validateForm(event) {
+			var varForm = document.myForm;
+			var txtName = varForm.txtName;
+			var txtAge = varForm.txtAge;
+			var txtEmail = varForm.txtEmail;
+			var button = varForm.btnSubmit;
+		    var age = parseInt(txtAge.value);
+
+		    button.disabled = true;
+			if (!isEmpty(txtName.value)) {
+
+				// validate age
+				if (!isNaN(age) && age > 0) {
+
+					// validate email field
+					if (txtEmail.value.indexOf("@") > 0) {
+
+					return ;
+
+					} else {
+						alert("Please enter a valid email address");
+						txtEmail.focus();
+						txtEmail.select();
+					}
+
+				} else {
+					alert("Please enter your age");
+					txtAge.focus();
+					txtAge.select();
+				}
+
+			} else {
+				alert("Please enter your name");
+				txtName.focus();
+			}
+
+			button.disabled = false;
+			event.preventDefault();
+		}
+		
+		function isEmpty(value) {
+		    return (value === "");
+		}
+	</script>
+</body>
+</html>

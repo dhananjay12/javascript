@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Ajax</title>
+</head>
+<body>
+<table>
+<tr>
+<td>Username: </td>
+<td><input type="text" id="username" /></td>
+<td><input type="button" id="ajaxButton" onclick="makeRequest();return false" value="Check"/>
+</td>
+<td><div id="result"></div></td>
+</tr>
+</table>
+
+
+<script type="text/javascript">
+	var httpRequest;
+	
+  function makeRequest() {
+    if (window.XMLHttpRequest) { 
+      httpRequest = new XMLHttpRequest();
+   	  } 
+
+    if (!httpRequest) {
+      alert('Cannot create an XMLHTTP instance');
+      return false;
+    }
+    var url="/MyNotes_JavaScript/CheckUserName?username="+document.getElementById('username').value;
+    httpRequest.onreadystatechange = processResponse;
+    httpRequest.open('GET', url);
+    httpRequest.send(null);
+  }
+
+  function processResponse() {
+    if (httpRequest.readyState === 4) {
+      if (httpRequest.status === 200) {
+    	 document.getElementById('result').innerHTML=httpRequest.responseText;
+      } else {
+        alert('There was a problem with the request.');
+      }
+    }
+  }
+</script>
+</body>
+</html>
