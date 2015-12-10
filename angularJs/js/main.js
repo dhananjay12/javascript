@@ -1,37 +1,36 @@
-var myApp = angular.module('angularApp', []);
+var myApp = angular.module('angularApp', ['ngRoute']);
 
-myApp.controller('mainController', ['$scope','$timeout', function($scope,$timeout) {
-    
-    $scope.name = '';
-    
-    $scope.$watch('name', function(newValue, oldValue) {        
-        console.info('Changed!');
-        console.log('Old:' + oldValue);
-        console.log('New:' + newValue);
-        
-    }); 
-    
-    $timeout(function() {       
-       $scope.name = 'setTimeout';
-       console.log('Scope changed by setTimeout!');        
-    }, 2000);
-    
-   /*  setTimeout(function() {
-       
-        $scope.name = 'setTimeout';
-        console.log('Scope changed by setTimeout!');
-        
-    }, 2000);   */
-    
+myApp.config(['$routeProvider', function ($routeProvider) {
 
-  /*   setTimeout(function() {
-           $scope.$apply(function(){
-               $scope.name = 'setTimeout';                      
-           });
-          console.log('Scope changed by setTimeout!');
+        $routeProvider
+        .when("/home", {
+            templateUrl: "views/home.html",
+            controller: "homeController"
+        })
+        .when("/about", {
+            templateUrl: "views/aboutus.html",
+            controller: "aboutController"
+        })
+        .when("/contact", {
+            templateUrl: "views/contactus.html",
+            controller: "contactController"
+        }).
+        otherwise({
+            redirect: '/home'
+        });
+    }]);
 
-     }, 2000);*/
-  
+myApp.controller('homeController', ["$scope",function ($scope) {
+    $scope.message="This is home page";
+          
 }]);
 
+myApp.controller('aboutController', ["$scope",function ($scope) {
+   $scope.message="This is about us page";
+          
+}]);
 
+myApp.controller('contactController', ["$scope",function ($scope) {
+   $scope.message="This is contact us page";
+          
+}]);
