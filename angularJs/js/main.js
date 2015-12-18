@@ -1,36 +1,20 @@
-var myApp = angular.module('angularApp', ['ngRoute']);
+var myApp = angular.module('angularApp', []);
 
-myApp.config(['$routeProvider', function ($routeProvider) {
 
-        $routeProvider
-        .when("/home", {
-            templateUrl: "views/home.html",
-            controller: "homeController"
-        })
-        .when("/about", {
-            templateUrl: "views/aboutus.html",
-            controller: "aboutController"
-        })
-        .when("/contact", {
-            templateUrl: "views/contactus.html",
-            controller: "contactController"
-        }).
-        otherwise({
-            redirect: '/home'
-        });
-    }]);
-
-myApp.controller('homeController', ["$scope",function ($scope) {
-    $scope.message="This is home page";
-          
+myApp.controller('mainController', ['$scope', function($scope) {
+    
+    $scope.book={
+        title:'Book1',
+        description:'Book1 description'
+    }
+  
 }]);
 
-myApp.controller('aboutController', ["$scope",function ($scope) {
-   $scope.message="This is about us page";
-          
-}]);
+myApp.directive("bookResult", function(){
 
-myApp.controller('contactController', ["$scope",function ($scope) {
-   $scope.message="This is contact us page";
-          
-}]);
+    return{
+        templateUrl:'directives/bookResultDirective.html',
+        replace:true
+    }
+
+});

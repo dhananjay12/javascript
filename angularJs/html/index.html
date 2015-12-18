@@ -4,7 +4,7 @@
         <title>Html Link Fragments</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />       
     </head>
-    <body>
+     <body>
 
         <header>
 			<nav class="navbar navbar-default">
@@ -12,22 +12,18 @@
 				<div class="navbar-header">
 					<a class="navbar-brand">AngularJS Demo</a>
 				</div>
-                <ul class="nav navbar-nav navbar-right">
-					<li><a href="#home"><i class="fa fa-home"></i> Home</a></li>
-                    <li><a href="#about"><i class="fa fa-home"></i> Avout Us</a></li>
-                    <li><a href="#contact"><i class="fa fa-home"></i> Contact Us</a></li>
-				</ul>
 			</div>
 			</nav>
 		</header>
-       <div id="container"> 
-         <div ng-view>
-          
-         </div>
-
-        </div>
+        <div class="container" ng-controller="mainController">
+          <div class="list-group">
+              <book-result></book-result>
+              <div book-result></div>
+              <div class="book-result"></div>
+              <!-- directive: book-result -->
+          </div>           
+		</div>
     </body>
      <script src="https://code.angularjs.org/1.4.8/angular.min.js"></script>
-     <script src="https://code.angularjs.org/1.4.8/angular-route.min.js"></script>
     <script src="../js/main.js"></script>
 </html>
