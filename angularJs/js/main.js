@@ -12,11 +12,7 @@ myApp.controller('mainController', ['$scope', function($scope) {
         title:'Book2',
         description:'Book2 description'
         }
-    ]
-    
-    $scope.getMoreDetail=function(bookName){
-        console.log(bookName);
-    }
+    ]   
   
 }]);
 
@@ -26,9 +22,27 @@ myApp.directive("bookResult", function(){
         templateUrl:'directives/bookResultDirective.html',
         replace:true,
         scope:{
-            bookObject: '=',
-            getBookDetails:'&'
+            bookObject: '='
+        },
+        transclude:true,
+        link:function (scope, iElem, iAttrs) {
+                               console.log(': post link');
+                               console.log(iElem);
         }
+     /*  compile: function (tElem, tAttrs) {
+                       console.log(': compile');
+                       console.log(tElem);
+                       return {
+                           pre: function (scope, iElem, iAttrs) {
+                               console.log(': pre link');
+                               console.log(iElem);
+                           },
+                           post: function (scope, iElem, iAttrs) {
+                               console.log(': post link');
+                               console.log(iElem);
+                           }
+                       }
+     }*/
     }
 
 });

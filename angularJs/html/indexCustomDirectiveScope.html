@@ -18,11 +18,11 @@
         <div class="container" ng-controller="mainController">
           <div class="list-group"> 
               <div ng-repeat="book in books">
-                <book-result book-object="book">*search result powered by Angular</book-result>
+                <book-result book-object="book" get-book-details="getMoreDetail(abookTitle)"></book-result>
               </div>
           </div>           
 		</div>
     </body>
      <script src="https://code.angularjs.org/1.4.8/angular.min.js"></script>
-    <script src="../js/main.js"></script>
+    <script src="../js/mainCustomDirectiveScope.js"></script>
 </html>
