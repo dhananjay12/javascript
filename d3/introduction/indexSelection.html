@@ -1,0 +1,30 @@
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <title>D3 Demo</title>
+    </head>
+    <body>
+        <h3>D3 Demo</h3>
+        <div id="content"></div>
+
+    </body>
+        <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+        <script>
+           var myDiv=d3.select("#content");
+           var myUl=myDiv.append("ul");
+           var myData=["Item 1","Item 2","Item 3"];
+             myUl.selectAll("li").data(myData).enter().append("li").text(function(d){
+             return d});    
+            myData=["Item A","Item B","Item C","Item D"];
+            myUl.selectAll("li").data(myData).enter().append("li").text(function(d){
+             return d});
+            
+            myUl.selectAll("li").text(function(d){ return d});
+            
+            myData=["Item 1","Item 2","Item 3"];
+            var updateItems= myUl.selectAll("li").data(myData);
+            updateItems.exit().remove();
+            
+            updateItems.text(function(d){ return d});
+        </script>
+    </html>

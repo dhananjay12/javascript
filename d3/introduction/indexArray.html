@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>D3 Demo</title>
+</head>
+<body>
+   <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script>
+        var data=[10,30,50,34,65,87,65,23,45,14];
+        console.log(d3.max(data));//87 
+        console.log(d3.min(data));//10
+        console.log(d3.extent(data)); //[10,87]   
+        
+        data=[{
+         monthYear:'Sept 2015',
+         count:'34'
+        },{
+         monthYear:'Oct 2015',
+         count:'43'
+        },{
+         monthYear:'Nov 2015',
+         count:'54'
+        },{
+         monthYear:'Dec 2015',
+         count:'96'
+        },{
+        monthYear:'Jan 2016',
+         count:'21'
+        },];
+        
+        
+        var objectMaxCount=d3.max(data,function(d){
+            return d.count;    
+        });
+        console.log(objectMaxCount);
+    </script>
+</body>
