@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>D3 Bar Chart</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+   <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script>
+        var data=[10,30,50,34,65,87,65,23,45,14];
+        var width=800;
+        var height=450;
+        var margin = {
+                top: 20,
+                bottom: 20,
+                left: 20,
+                right: 20
+            };
+        var widthBar = width - margin.left - margin.right;
+        var heightBar = height - margin.top - margin.bottom;
+        var x=d3.scale.linear()
+                .domain([0,d3.max(data)])
+                .range([0,widthBar]);
+        var y=d3.scale.linear()
+                .domain([0,data.length])
+                .range([0,heightBar]);
+        var svg=d3.select("body").append("svg")
+                .attr("id","chart")
+                .attr("width",width)
+                .attr("height",height)
+                .append("g")
+			    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+        
+        svg.selectAll(".bar")
+            .data(data)
+            .enter()
+            .append("rect")
+            .classed("bar",true)
+            .attr("x",0)
+            .attr("y",function(d,i){ 
+                return y(i);
+            })
+            .attr("width",function(d,i){ 
+                return x(d);
+            })
+            .attr("height",function(d,i){
+                return y(1)-1;    
+            }); 
+    </script>
+</body>
+</html>
